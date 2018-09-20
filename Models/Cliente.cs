@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace WebApiFluentNhibernate.Models
         public virtual string Cpf { get; set; }
         public virtual DateTime DataNascimento { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Venda> Venda { get; set; }
 
     }
