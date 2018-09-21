@@ -25,5 +25,22 @@ namespace WebApiFluentNhibernate.Controllers
             var clientes = clienteRepository.Lista();
             return clientes;
         }
+
+        public IHttpActionResult Post(Cliente cliente)
+        {
+            clienteRepository.GravarCliente(cliente);
+            return Ok();
+        }
+        public IHttpActionResult Put(Cliente cliente)
+        {
+            clienteRepository.GravarCliente(cliente);
+            return Ok();
+        }
+
+        public IHttpActionResult Delete(int id)
+        {
+            var retorno = clienteRepository.EliminarCliente(id);
+            return StatusCode(HttpStatusCode.NoContent);
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace WebApiFluentNhibernate.Repository
             {
                 using (var context = new DBContext())
                 {
-                    var cliente = ClienteId(id);
+                    var cliente = context.session.Get<Cliente>(id);
                     context.session.Delete(cliente);
                     context.transaction.Commit();
                     return cliente;
@@ -51,7 +51,7 @@ namespace WebApiFluentNhibernate.Repository
             try
             {
                 using (var context = new DBContext())
-                {
+               {
                     if (cliente.ClienteId == 0)
                     {
                         context.session.Save(cliente);

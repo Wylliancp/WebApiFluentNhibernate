@@ -25,6 +25,10 @@ namespace WebApiFluentNhibernate.Repository
                 context.transaction.Rollback();
                 throw e;
             }
+            finally
+            {
+                context.session.Close();
+            }
         }
 
         public void GravarProduto(Produto produto)
