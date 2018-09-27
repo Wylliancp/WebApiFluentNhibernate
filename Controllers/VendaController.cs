@@ -29,11 +29,16 @@ namespace WebApiFluentNhibernate.Controllers
             return Json(vendar);
         }
 
-        public IList<Venda> GetVendas()
+        public IList<VendaDTO> GetVendas()
         {
-            var retorno = JsonConvert.SerializeObject(vendaRepository.Lista(), Formatting.Indented, new JsonSerializerSettings { });
-            IList<Venda> vendas = JsonConvert.DeserializeObject<List<Venda>>(retorno);
-            return vendas;
+
+
+            var vendas = vendaRepository.Lista();
+            IList<VendaDTO> ns = vendas.GetDTOs();
+            
+            var retorno = JsonConvert.SerializeObject(ns);
+            IList<VendaDTO> vendass = JsonConvert.DeserializeObject<List<VendaDTO>>(retorno);
+            return vendass;
         }
 
         public IHttpActionResult Post(Venda venda)

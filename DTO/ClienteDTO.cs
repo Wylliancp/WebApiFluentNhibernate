@@ -13,8 +13,6 @@ namespace WebApiFluentNhibernate.DTO
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
-
-        //[JsonIgnore]
-        //public ICollection<VendaDTO> VendaDTO { get; set; }
+        
     }
 }

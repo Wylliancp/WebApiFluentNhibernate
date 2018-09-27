@@ -17,7 +17,6 @@ namespace WebApiFluentNhibernate.Controllers
         public IHttpActionResult GetCliente(int id)
         {
             var cliente = clienteRepository.ClienteId(id);
-            //return cliente;
             return Json(cliente);
         }
 
