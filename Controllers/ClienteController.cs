@@ -14,10 +14,11 @@ namespace WebApiFluentNhibernate.Controllers
         private readonly ClienteRepository clienteRepository = new ClienteRepository();
 
 
-        public Cliente GetCliente(int id)
+        public IHttpActionResult GetCliente(int id)
         {
             var cliente = clienteRepository.ClienteId(id);
-            return cliente;
+            //return cliente;
+            return Json(cliente);
         }
 
         public IList<Cliente> GetClientes()

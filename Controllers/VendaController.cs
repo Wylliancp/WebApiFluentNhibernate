@@ -1,10 +1,14 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApiFluentNhibernate.DTO;
+using WebApiFluentNhibernate.DTO.Resources;
 using WebApiFluentNhibernate.Models;
 using WebApiFluentNhibernate.Repository;
 
@@ -13,18 +17,23 @@ namespace WebApiFluentNhibernate.Controllers
     public class VendaController : ApiController
     {
         private VendaRepository vendaRepository = new VendaRepository();
-
-        public Venda GetVenda(int id)
+       public IHttpActionResult GetVenda(int id)
         {
-            var retorno = JsonConvert.SerializeObject(vendaRepository.VendaId(id));
-            Venda des = JsonConvert.DeserializeObject<Venda>(retorno);
-            return des;
+            var venda = vendaRepository.VendaId(id);
+
+            VendaDTO n = venda.GetDTO();
+
+            var retorno = JsonConvert.SerializeObject(n);
+            VendaDTO vendar = JsonConvert.DeserializeObject<VendaDTO>(retorno);
+
+            return Json(vendar);
         }
 
         public IList<Venda> GetVendas()
         {
-            var retorno = vendaRepository.Lista();
-            return retorno;
+            var retorno = JsonConvert.SerializeObject(vendaRepository.Lista(), Formatting.Indented, new JsonSerializerSettings { });
+            IList<Venda> vendas = JsonConvert.DeserializeObject<List<Venda>>(retorno);
+            return vendas;
         }
 
         public IHttpActionResult Post(Venda venda)

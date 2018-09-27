@@ -6,6 +6,7 @@ using System.Web;
 
 namespace WebApiFluentNhibernate.Models
 {
+   
     public class Produto
     {
         public virtual int ProdutoId { get; set; }

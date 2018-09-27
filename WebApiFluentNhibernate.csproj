@@ -112,6 +112,10 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
+    <Compile Include="DTO\ClienteDTO.cs" />
+    <Compile Include="DTO\ProdutoDTO.cs" />
+    <Compile Include="DTO\Resources\ModelDTOConverter.cs" />
+    <Compile Include="DTO\VendaDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
